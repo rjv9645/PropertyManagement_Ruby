@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Remove all locations, reset sequence, then seed.
+Location.destroy_all
+Location.connection.execute("DELETE FROM sqlite_sequence where name='locations'")
+Location.create(address: "8 Fake Address Lane", latitude: 23.213606, longitude: -70.890078)
