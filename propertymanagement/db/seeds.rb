@@ -8,5 +8,11 @@
 
 # Remove all locations, reset sequence, then seed.
 Location.destroy_all
-Location.connection.execute("DELETE FROM sqlite_sequence where name='locations'")
+
+#Sqlite reset primary key index
+#Location.connection.execute("DELETE FROM sqlite_sequence where name='locations'")
+
+#MySql reset primary key index
+Location.connection.execute("ALTER TABLE locations AUTO_INCREMENT = 1")
+
 Location.create(address: "8 Fake Address Lane", latitude: 23.213606, longitude: -70.890078)
